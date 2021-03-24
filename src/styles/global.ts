@@ -10,6 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     --text-title: #363F5F;
     --text-body: #969CB2;
     --shape: #FFFFFF;
+    --text-button: #FFFFFF;
   }
 
   * {
@@ -40,15 +41,19 @@ export const GlobalStyle = createGlobalStyle`
 
   body, input, textarea, button {
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
-    font-weight: 400;
   }
 
-  h1, h2, h3, h4, h5, h6, strong {
+  body, input, textarea {
+    font-weight: 400;
+
+
+  h1, h2, h3, h4, h5, h6, strong, button{
     font-weight: 600;
   }
 
   button {
     cursor: pointer;
+    transition: all 300ms ease;
   }
 
   [disabled] {
