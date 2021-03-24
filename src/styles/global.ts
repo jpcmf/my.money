@@ -7,16 +7,17 @@ export const GlobalStyle = createGlobalStyle`
     --blue: #5429CC;
     --blue-light: #6933FF;
     --green: #33CC95;
+    --white: #FFFFFF;
     --text-title: #363F5F;
     --text-body: #969CB2;
     --shape: #FFFFFF;
     --text-button: #FFFFFF;
+    --border: 0.25rem;
   }
 
   * {
       box-sizing: border-box;
       margin: 0;
-      outline: 0;
       padding: 0;
     }
 
@@ -36,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased !important;
-    background-color: var(---background);
+    background-color: var(--background);
   }
 
   body, input, textarea, button {
