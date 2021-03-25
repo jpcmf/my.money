@@ -1,5 +1,6 @@
 # my.money
 
-## Techs
+## Tools
 
-- Styled Components
+- [Styled Components](https://styled-components.com)
+- [Mirage JS](https://miragejs.com/)
