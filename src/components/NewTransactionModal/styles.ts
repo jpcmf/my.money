@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { darken, transparentize } from 'polished';
 
 export const Container = styled.form`
   h2 {
@@ -49,28 +49,41 @@ export const ButtonTypeWrapper = styled.div`
   gap: 0.5rem;
   grid-template-columns: repeat(2, 1fr);
   margin: 1rem 0;
+`;
 
-  button {
-    align-items: center;
-    background-color: var(--input-bg);
-    border-radius: var(--border);
-    border: solid 1px var(--input-border);
-    display: flex;
-    height: 4rem;
-    justify-content: center;
+interface ButtonRadioProps {
+  isActive: boolean;
+  activeColor: 'green' | 'red';
+}
 
-    &:hover {
-      border-color: ${darken(0.2, '#d7d7d7')};
-    }
+const colors = {
+  green: '#33CC95',
+  red: '#E52E4D',
+};
 
-    img {
-      margin-right: 1rem;
-    }
+export const ButtonRadio = styled.button<ButtonRadioProps>`
+  align-items: center;
+  background-color: ${(props) =>
+    props.isActive
+      ? transparentize(0.9, colors[props.activeColor])
+      : 'transparent'};
+  border-radius: var(--border);
+  border: solid 1px var(--input-border);
+  display: flex;
+  height: 4rem;
+  justify-content: center;
 
-    span {
-      color: var(--text-title);
-      font-size: 1rem;
-      font-weight: 400;
-    }
+  &:hover {
+    border-color: ${darken(0.2, '#d7d7d7')};
+  }
+
+  img {
+    margin-right: 1rem;
+  }
+
+  span {
+    color: var(--text-title);
+    font-size: 1rem;
+    font-weight: 400;
   }
 `;
