@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 
 import closeImg from '../../assets/close.svg';
@@ -17,6 +17,9 @@ export function NewTransactionModal({
   isOpen,
   onRequestClose,
 }: NewTransactionModalProps) {
+  const [title, setTitle] = useState('');
+  const [value, setValue] = useState(0);
+  const [category, setCategory] = useState('');
   const [type, setType] = useState('deposit');
 
   function handleSetTypeDeposit() {
@@ -25,6 +28,11 @@ export function NewTransactionModal({
 
   function handleSetTypeWithDraw() {
     setType('withdraw');
+  }
+
+  function handleCreateNewTransaction(event: FormEvent) {
+    event.preventDefault();
+    console.log({ title, value, category, type });
   }
 
   return (
@@ -41,10 +49,20 @@ export function NewTransactionModal({
       >
         <img src={closeImg} alt="close" />
       </button>
-      <Container>
+      <Container onSubmit={handleCreateNewTransaction}>
         <h2>Add transaction</h2>
-        <input type="text" placeholder="Title" />
-        <input type="number" placeholder="Value" />
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Value"
+          value={value}
+          onChange={(event) => setValue(Number(event.target.value))}
+        />
         <ButtonTypeWrapper>
           <ButtonRadio
             type="button"
@@ -65,7 +83,12 @@ export function NewTransactionModal({
             <span>Outcome</span>
           </ButtonRadio>
         </ButtonTypeWrapper>
-        <input type="text" placeholder="Category" />
+        <input
+          type="text"
+          placeholder="Category"
+          value={category}
+          onChange={(event) => setCategory(event.target.value)}
+        />
         <button type="submit">Add</button>
       </Container>
     </Modal>
