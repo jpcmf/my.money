@@ -30,3 +30,4 @@ yarn start or npm start
 - Create new logo
 - Create dark mode
 - Create charts
+- Create PWA
