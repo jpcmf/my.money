@@ -9,6 +9,8 @@ import outcomeImg from '../../assets/outcome.svg';
 
 import { Container, ButtonTypeWrapper, ButtonRadio } from './styles';
 
+import TransactionDataService from '../../services/firebase.service';
+
 interface NewTransactionModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
@@ -43,6 +45,16 @@ export function NewTransactionModal({
       category,
       type,
     });
+
+    const data = { title, amount, category, type };
+
+    await TransactionDataService.create(data)
+      .then(() => {
+        console.log('ok, created.');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     setTitle('');
     setAmount(0);
